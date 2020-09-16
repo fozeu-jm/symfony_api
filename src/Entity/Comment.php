@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     subresourceOperations={
  *          "api_blog_posts_comments_get_subresource"={
  *              "method"="GET",
- *              "normalization_context"={ "groups"={"get"} }
+ *              "normalization_context"={ "groups"={"post_comment"} }
  *          }
  *     })
  * @ORM\Entity(repositoryClass=CommentRepository::class)
@@ -35,6 +35,7 @@ class Comment
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"post_comment"})
      */
     private $id;
 
@@ -42,12 +43,14 @@ class Comment
      * @ORM\Column(type="text")
      * @Assert\NotBlank()
      * @Assert\Length(min=5)
+     * @Groups({"post_comment","single_post"})
      */
     private $content;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"post_comment","single_post"})
      */
     private $author;
 
@@ -59,6 +62,7 @@ class Comment
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"post_comment","single_post"})
      */
     private $published;
 

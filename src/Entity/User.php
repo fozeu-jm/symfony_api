@@ -45,13 +45,13 @@ class User implements UserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"get"})
+     * @Groups({"get","post_comment","single_post"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"get","post"})
+     * @Groups({"get","post","post_comment"})
      * @Assert\NotBlank()
      */
     private $username;
@@ -80,6 +80,7 @@ class User implements UserInterface
      * @Groups({"get","post","put"})
      * @Assert\NotBlank()
      * @Assert\Length(min=6, max=255)
+     * @Groups({"post_comment","single_post"})
      */
     private $name;
 
