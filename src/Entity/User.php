@@ -94,7 +94,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"get","post","put","get-admin"})
+     * @Groups({"get-admin","post","put"})
      * @Assert\NotBlank()
      * @Assert\Email()
      */
