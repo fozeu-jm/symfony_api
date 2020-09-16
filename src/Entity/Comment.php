@@ -19,11 +19,14 @@ use Symfony\Component\Validator\Constraints as Assert;
  *      },
  *     collectionOperations={
  *          "get",
- *          "post"={"access_control"="is_granted('IS_AUTHENTICATED_FULLY')"},
+ *          "post"={"access_control"="is_granted('IS_AUTHENTICATED_FULLY')"}
+ *      },
+ *     subresourceOperations={
  *          "api_blog_posts_comments_get_subresource"={
- *              "normalization_context"={ "groups" = {"post_comment"} }
+ *              "method"="GET",
+ *              "normalization_context"={ "groups"={"post_comment"} }
  *          }
- *      })
+ *     })
  * @ORM\Entity(repositoryClass=CommentRepository::class)
  */
 class Comment
@@ -40,13 +43,14 @@ class Comment
      * @ORM\Column(type="text")
      * @Assert\NotBlank()
      * @Assert\Length(min=5)
-     * @Groups({"post_comment"})
+     * @Groups({"post_comment","single_post"})
      */
     private $content;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"post_comment","single_post"})
      */
     private $author;
 
@@ -58,6 +62,7 @@ class Comment
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"post_comment","single_post"})
      */
     private $published;
 
@@ -93,7 +98,7 @@ class Comment
     /**
      * @return User
      */
-    public function getAuthor():User
+    public function getAuthor(): User
     {
         return $this->author;
     }
@@ -110,7 +115,7 @@ class Comment
     /**
      * @return BlogPost
      */
-    public function getBlogPost() : BlogPost
+    public function getBlogPost(): BlogPost
     {
         return $this->blogPost;
     }

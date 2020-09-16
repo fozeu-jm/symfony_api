@@ -14,13 +14,16 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass=BlogPostRepository::class)
  * @ApiResource(
- *     itemOperations={"get",
+ *     itemOperations={
+ *          "get"={
+ *                  "normalization_context"={ "groups"={"single_post"} }
+ *           },
  *          "put"={"access_control"="is_granted('IS_AUTHENTICATED_FULLY') and object.getAuthor() === user"},
- *          "delete"},
- *          collectionOperations={
+ *          "delete"
+ *     },
+ *     collectionOperations={
  *          "get",
- *          "post"={"access_control"="is_granted('IS_AUTHENTICATED_FULLY')"},
- *
+ *          "post"={"access_control"="is_granted('IS_AUTHENTICATED_FULLY')"}
  *      }
  * )
  */
@@ -30,7 +33,7 @@ class BlogPost
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     *
+     * @Groups({"single_post"})
      */
     private $id;
 
@@ -38,6 +41,7 @@ class BlogPost
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank()
      * @Assert\Length(min=10)
+     * @Groups({"single_post"})
      */
     private $title;
 
@@ -45,6 +49,7 @@ class BlogPost
      * @ORM\Column(type="datetime")
      * @Assert\NotBlank()
      * @Assert\Type("datetime")
+     * @Groups({"single_post"})
      */
     private $published;
 
@@ -52,24 +57,28 @@ class BlogPost
      * @ORM\Column(type="text")
      * @Assert\NotBlank()
      * @Assert\Length(min=20)
+     * @Groups({"single_post"})
      */
     private $content;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User",inversedBy="posts")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"single_post"})
      */
     private $author;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\NotBlank()
+     * @Groups({"single_post"})
      */
     private $slug;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="blogPost")
      * @ApiSubresource()
+     * @Groups({"single_post"})
      */
     private $comments;
 
