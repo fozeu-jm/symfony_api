@@ -7,6 +7,7 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\Types\This;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -41,6 +42,13 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class User implements UserInterface
 {
+    const ROLE_COMMENTATOR="ROLE_COMMENTATOR";
+    const ROLE_WRITER="ROLE_WRITER";
+    const ROLE_EDITOR="ROLE_EDITOR";
+    const ROLE_ADMIN="ROLE_ADMIN";
+    const ROLE_SUPERADMIN="ROLE_SUPERADMIN";
+
+    const DEFAULT_ROLE=[self::ROLE_COMMENTATOR];
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -86,7 +94,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"get","post","put"})
+     * @Groups({"get","post","put","get-admin"})
      * @Assert\NotBlank()
      * @Assert\Email()
      */
@@ -105,12 +113,18 @@ class User implements UserInterface
     private $comments;
 
     /**
+     * @ORM\Column(type="simple_array", length=200, nullable=false)
+     */
+    private $roles;
+
+    /**
      * User constructor.
      */
     public function __construct()
     {
         $this->posts = new ArrayCollection();
         $this->comments = new ArrayCollection();
+        $this->roles = self::DEFAULT_ROLE;
     }
 
 
@@ -188,9 +202,18 @@ class User implements UserInterface
     /**
      * @inheritDoc
      */
-    public function getRoles()
+    public function getRoles() : array
     {
-        return ['ROLE_USER'];
+        return $this->roles;
+    }
+
+    /**
+     * @param mixed $roles
+     */
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+        return $this;
     }
 
     /**

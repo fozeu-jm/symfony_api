@@ -18,12 +18,12 @@ use Symfony\Component\Validator\Constraints as Assert;
  *          "get"={
  *                  "normalization_context"={ "groups"={"single_post"} }
  *           },
- *          "put"={"access_control"="is_granted('IS_AUTHENTICATED_FULLY') and object.getAuthor() === user"},
+ *          "put"={"access_control"="is_granted('ROLE_EDITOR') or (is_granted('ROLE_WRITER') and object.getAuthor() === user)"},
  *          "delete"
  *     },
  *     collectionOperations={
  *          "get",
- *          "post"={"access_control"="is_granted('IS_AUTHENTICATED_FULLY')"}
+ *          "post"={"access_control"="is_granted('ROLE_WRITER')"}
  *      }
  * )
  */
@@ -47,7 +47,6 @@ class BlogPost
 
     /**
      * @ORM\Column(type="datetime")
-     * @Assert\NotBlank()
      * @Assert\Type("datetime")
      * @Groups({"single_post"})
      */

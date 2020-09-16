@@ -13,13 +13,13 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     itemOperations={
  *          "get",
  *          "put"={
- *                  "access_control"="is_granted('IS_AUTHENTICATED_FULLY') and object.getAuthor() === user"
+ *                  "access_control"="is_granted(ROLE_EDITOR) or (is_granted('ROLE_COMMENTATOR') and object.getAuthor() === user)"
  *                },
  *          "delete"
  *      },
  *     collectionOperations={
  *          "get",
- *          "post"={"access_control"="is_granted('IS_AUTHENTICATED_FULLY')"}
+ *          "post"={"access_control"="is_granted('ROLE_COMMENTATOR')"}
  *      },
  *     subresourceOperations={
  *          "api_blog_posts_comments_get_subresource"={
@@ -50,7 +50,7 @@ class Comment
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"post_comment","single_post"})
+     * @Groups({"post_comment","single_post" })
      */
     private $author;
 
