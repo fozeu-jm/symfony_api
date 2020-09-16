@@ -43,6 +43,9 @@
     </expand>
     <select />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.2">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/symfony/yaml" />
@@ -147,6 +150,7 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1gyHiDgsI2Fu3oN4w8HBAAsnYO2" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -181,7 +185,7 @@
       <workItem from="1599140931854" duration="6614000" />
       <workItem from="1599671640090" duration="40591000" />
       <workItem from="1599910958697" duration="25216000" />
-      <workItem from="1600159379698" duration="29506000" />
+      <workItem from="1600159379698" duration="29873000" />
     </task>
     <servers />
   </component>
