@@ -10,8 +10,10 @@ use Doctrine\ORM\Mapping as ORM;
 use phpDocumentor\Reflection\Types\This;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Controller\ResetPasswordAction;
 
 /**
  * @ApiResource(
@@ -24,6 +26,13 @@ use Symfony\Component\Validator\Constraints as Assert;
  *                      "access_control"="is_granted('IS_AUTHENTICATED_FULLY') and object === user",
  *                      "denormalization_context"={ "groups"={"put"} },
  *                      "normalization_context"={ "groups"={"get"} }
+ *                },
+ *           "put-reset-password"={
+ *                      "access_control"="is_granted('IS_AUTHENTICATED_FULLY') and object === user",
+ *                      "method" = "PUT",
+ *                      "path" = "/users/{id}/reset",
+ *                      "controller"=ResetPasswordAction::class,
+ *                      "denormalization_context"={ "groups"={"put-reset-password"} }
  *                },
  *          "delete"
  *     },
@@ -42,13 +51,13 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class User implements UserInterface
 {
-    const ROLE_COMMENTATOR="ROLE_COMMENTATOR";
-    const ROLE_WRITER="ROLE_WRITER";
-    const ROLE_EDITOR="ROLE_EDITOR";
-    const ROLE_ADMIN="ROLE_ADMIN";
-    const ROLE_SUPERADMIN="ROLE_SUPERADMIN";
+    const ROLE_COMMENTATOR = "ROLE_COMMENTATOR";
+    const ROLE_WRITER = "ROLE_WRITER";
+    const ROLE_EDITOR = "ROLE_EDITOR";
+    const ROLE_ADMIN = "ROLE_ADMIN";
+    const ROLE_SUPERADMIN = "ROLE_SUPERADMIN";
 
-    const DEFAULT_ROLE=[self::ROLE_COMMENTATOR];
+    const DEFAULT_ROLE = [self::ROLE_COMMENTATOR];
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -60,25 +69,27 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"get","post","post_comment"})
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(groups={"post"})
      */
     private $username;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"put","post"})
-     * @Assert\NotBlank()
+     * @Groups({"post"})
+     * @Assert\NotBlank(groups={"post"})
      * @Assert\Regex(pattern="/(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{7,}/",
-     *     message="Password must be seven characters long and contain at least one digit, and on upper and lower case letter")
+     *     message="Password must be seven characters long and contain at least one digit, and on upper and lower case letter",
+     *     groups={"post"})
      */
     private $password;
 
     /**
-     * @Groups({"put","post"})
-     * @Assert\NotBlank()
+     * @Groups({"post"})
+     * @Assert\NotBlank(groups={"post"})
      * @Assert\Expression(
      *     "this.getPassword() === this.getRetypedPassword()",
-     *     message="Passwords does not match"
+     *     message="Passwords does not match",
+     *     groups={"post"}
      * )
      */
     private $retypedPassword;
@@ -86,17 +97,17 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"get","post","put"})
-     * @Assert\NotBlank()
-     * @Assert\Length(min=6, max=255)
+     * @Assert\NotBlank(groups={"post","put"})
+     * @Assert\Length(min=6, max=255,groups={"post","put"})
      * @Groups({"post_comment","single_post"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"get-admin","post","put"})
-     * @Assert\NotBlank()
-     * @Assert\Email()
+     * @Groups({"get-admin","post","put","get-owner"})
+     * @Assert\NotBlank(groups={"post","put"})
+     * @Assert\Email(groups={"post","put"})
      */
     private $email;
 
@@ -114,8 +125,39 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="simple_array", length=200, nullable=false)
+     * @Groups({"get-admin","get-owner"})
      */
     private $roles;
+
+    /**
+     * @Groups({"put-reset-password"})
+     * @Assert\NotBlank(groups={"put-reset-password"})
+     * @Assert\Regex(
+     *     pattern="/(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{7,}/",
+     *     message="Password must be seven characters long and contain at least one digit, one upper case letter and one lower case letter")
+     */
+    private $newPassword;
+
+    /**
+     * @Groups({"put-reset-password"})
+     * @Assert\NotBlank(groups={"put-reset-password"})
+     * @Assert\Expression(
+     *     "this.getNewPassword() === this.getNewRetypedPassword()",
+     *     message="Passwords does not match")
+     */
+    private $newRetypedPassword;
+
+    /**
+     * @Groups({"put-reset-password"})
+     * @Assert\NotBlank()
+     * @UserPassword()
+     */
+    private $oldPassword;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $passwordChangeDate;
 
     /**
      * User constructor.
@@ -202,7 +244,7 @@ class User implements UserInterface
     /**
      * @inheritDoc
      */
-    public function getRoles() : array
+    public function getRoles(): array
     {
         return $this->roles;
     }
@@ -245,5 +287,45 @@ class User implements UserInterface
     public function setRetypedPassword($retypedPassword): void
     {
         $this->retypedPassword = $retypedPassword;
+    }
+
+    public function getNewPassword(): ?string
+    {
+        return $this->newPassword;
+    }
+
+    public function setNewPassword($newPassword): void
+    {
+        $this->newPassword = $newPassword;
+    }
+
+    public function getNewRetypedPassword(): ?string
+    {
+        return $this->newRetypedPassword;
+    }
+
+    public function setNewRetypedPassword($newRetypedPassword): void
+    {
+        $this->newRetypedPassword = $newRetypedPassword;
+    }
+
+    public function getOldPassword(): ?string
+    {
+        return $this->oldPassword;
+    }
+
+    public function setOldPassword($oldPassword): void
+    {
+        $this->oldPassword = $oldPassword;
+    }
+
+    public function getPasswordChangeDate()
+    {
+        return $this->passwordChangeDate;
+    }
+
+    public function setPasswordChangeDate($passwordChangeDate): void
+    {
+        $this->passwordChangeDate = $passwordChangeDate;
     }
 }
