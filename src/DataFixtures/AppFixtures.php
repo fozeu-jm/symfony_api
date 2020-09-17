@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 use App\Entity\BlogPost;
 use App\Entity\Comment;
 use App\Entity\User;
+use App\Security\TokenGenerator;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
@@ -28,53 +29,66 @@ class AppFixtures extends Fixture
             "email" => "fozeu.jm@gmail.com",
             "name" => "Fozeu Jean Marie",
             "password" => "Je@nm@rie1234",
-            "roles" => [User::ROLE_SUPERADMIN]
+            "roles" => [User::ROLE_SUPERADMIN],
+            "enabled" => true
         ],
         [
             "username" => "leo.brice@gmail.com",
             "email" => "leo.brice@gmail.com",
             "name" => "Lionel Wanchie",
             "password" => "W@nchie1234",
-            "roles" => [User::ROLE_ADMIN]
+            "roles" => [User::ROLE_ADMIN],
+            "enabled" => true
         ],
         [
             "username" => "nguitanga@gmail.com",
             "email" => "nguitanga@gmail.com",
             "name" => "Nguitanaga Jaenette",
             "password" => "Nguit@ng@1234",
-            "roles" => [User::ROLE_WRITER]
+            "roles" => [User::ROLE_WRITER],
+            "enabled" => true
         ],
         [
             "username" => "rawlings@gmail.com",
             "email" => "rawlings@gmail.com",
             "name" => "Jenny Rawlings",
             "password" => "R@wlings1234",
-            "roles" => [User::ROLE_WRITER]
+            "roles" => [User::ROLE_WRITER],
+            "enabled" => true
         ],
         [
             "username" => "solo@gmail.com",
             "email" => "solo@gmail.com",
             "name" => "Ian Solo",
             "password" => "Solo1234",
-            "roles" => [User::ROLE_EDITOR]
+            "roles" => [User::ROLE_EDITOR],
+            "enabled" => false
         ],
         [
             "username" => "archimedes@gmail.com",
             "email" => "archimedes@gmail.com",
             "name" => "Archimedes Christopher",
             "password" => "Christ1234",
-            "roles" => [User::ROLE_COMMENTATOR]
+            "roles" => [User::ROLE_COMMENTATOR],
+            "enabled" => true
         ]
     ];
+    /**
+     * @var TokenGenerator
+     */
+    private $tokenGenerator;
 
 
     /**
      * AppFixtures constructor.
      */
-    public function __construct(UserPasswordEncoderInterface $passwordEncoder)
+    public function __construct(
+        TokenGenerator $tokenGenerator,
+        UserPasswordEncoderInterface $passwordEncoder)
     {
         $this->passwordEncoder = $passwordEncoder;
         $this->faker = \Faker\Factory::create();
+        $this->tokenGenerator = $tokenGenerator;
     }
 
     public function load(ObjectManager $manager)
@@ -97,6 +111,13 @@ class AppFixtures extends Fixture
             ));
             $this->addReference( "user_".$item["username"], $user);
             $user->setRoles($item["roles"]);
+            $user->setEnabled($item["enabled"]);
+            if(!$item["enabled"]){
+                $user->setConfirmationToken(
+                    $this->tokenGenerator->getRandomSecureToken()
+                );
+            }
+
             $manager->persist($user);
         }
         $manager->flush();

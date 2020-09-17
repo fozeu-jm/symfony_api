@@ -2,13 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="924f386a-f485-47ad-90f6-669150c46207" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/symfony2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20200917125305.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/UserConfirmation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EventSubscriber/UserConfirmationSubscriber.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Security/TokenGenerator.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Security/UserEnabledChecker.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/project.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20200916112045.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ResetPasswordAction.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ResetPasswordAction.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/BlogPost.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/BlogPost.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EventSubscriber/PasswordHashSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/EventSubscriber/PasswordHashSubscriber.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,6 +169,13 @@
       <path value="$PROJECT_DIR$/vendor/symfony/monolog-bridge" />
       <path value="$PROJECT_DIR$/vendor/symfony/monolog-bundle" />
       <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/vendor/egulias/email-validator" />
+      <path value="$PROJECT_DIR$/vendor/symfony/swiftmailer-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/mime" />
+      <path value="$PROJECT_DIR$/vendor/vich/uploader-bundle" />
+      <path value="$PROJECT_DIR$/vendor/jms/metadata" />
     </include_path>
   </component>
   <component name="ProjectId" id="1gyHiDgsI2Fu3oN4w8HBAAsnYO2" />
@@ -169,7 +190,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/config/jwt" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="reference.idesettings.emmet" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -193,7 +214,8 @@
       <workItem from="1599140931854" duration="6614000" />
       <workItem from="1599671640090" duration="40591000" />
       <workItem from="1599910958697" duration="25216000" />
-      <workItem from="1600159379698" duration="65252000" />
+      <workItem from="1600159379698" duration="76749000" />
+      <workItem from="1600358662026" duration="14270000" />
     </task>
     <servers />
   </component>
@@ -217,14 +239,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="71" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1599145560495" />
-    <state x="562" y="128" key="#com.intellij.ide.util.MemberChooser" timestamp="1600338078778">
+    <state x="562" y="128" key="#com.intellij.ide.util.MemberChooser" timestamp="1600372605621">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="562" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1600338078778" />
-    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1600336548631">
+    <state x="562" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1600372605621" />
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1600359869422">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1600336548631" />
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1600359869422" />
     <state x="548" y="57" key="#com.jetbrains.php.refactoring.extractMethod.PhpExtractMethodDialog#method0" timestamp="1600209823055">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -233,33 +255,41 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="189" height="457" key="HiddenNamespacesPopup/0.0.1536.824@0.0.1536.824" timestamp="1599145578801" />
-    <state x="558" y="75" key="NewPhpClassDialog" timestamp="1600344015343">
+    <state x="558" y="75" key="NewPhpClassDialog" timestamp="1600369133023">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="558" y="75" key="NewPhpClassDialog/0.0.1536.824@0.0.1536.824" timestamp="1600344015343" />
-    <state x="758" y="217" key="NewPhpFileDialog" timestamp="1600299798298">
+    <state x="558" y="75" key="NewPhpClassDialog/0.0.1536.824@0.0.1536.824" timestamp="1600369133023" />
+    <state x="758" y="217" key="NewPhpFileDialog" timestamp="1600365936555">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="758" y="217" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1600299798298" />
-    <state x="277" y="55" key="SettingsEditor" timestamp="1599672293851">
+    <state x="758" y="217" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1600365936555" />
+    <state x="277" y="55" key="SettingsEditor" timestamp="1600358793600">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="277" y="55" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1599672293851" />
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1600159426479">
+    <state x="277" y="55" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1600358793600" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1600358710761">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1600159426479" />
+    <state width="498" height="446" key="SwitcherDM/0.0.1536.824@0.0.1536.824" timestamp="1600358710761" />
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1600358671941">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1600358671941" />
     <state x="462" y="10" width="740" height="804" key="find.popup" timestamp="1600185939493">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="462" y="10" width="740" height="804" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1600185939493" />
+    <state x="492" y="55" key="refactoring.ChangeSignatureDialog" timestamp="1600365014270">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="492" y="55" key="refactoring.ChangeSignatureDialog/0.0.1536.824@0.0.1536.824" timestamp="1600365014270" />
     <state x="425" y="187" key="run.anything.popup" timestamp="1600091586638">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1600091586638" />
-    <state x="431" y="145" key="search.everywhere.popup" timestamp="1600337718090">
+    <state x="431" y="145" key="search.everywhere.popup" timestamp="1600358683645">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1600337718090" />
+    <state x="431" y="145" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1600358683645" />
   </component>
 </project>
