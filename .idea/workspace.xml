@@ -2,10 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="924f386a-f485-47ad-90f6-669150c46207" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/symfony2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20200916112045.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EventSubscriber/AuthorEntitySubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/EventSubscriber/AuthorEntitySubscriber.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EventSubscriber/PasswordHashSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/EventSubscriber/PasswordHashSubscriber.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,7 +193,7 @@
       <workItem from="1599140931854" duration="6614000" />
       <workItem from="1599671640090" duration="40591000" />
       <workItem from="1599910958697" duration="25216000" />
-      <workItem from="1600159379698" duration="44664000" />
+      <workItem from="1600159379698" duration="65252000" />
     </task>
     <servers />
   </component>
@@ -214,14 +217,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="71" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1599145560495" />
-    <state x="562" y="128" key="#com.intellij.ide.util.MemberChooser" timestamp="1600254571395">
+    <state x="562" y="128" key="#com.intellij.ide.util.MemberChooser" timestamp="1600338078778">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="562" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1600254571395" />
-    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1600255303479">
+    <state x="562" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1600338078778" />
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1600336548631">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1600255303479" />
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1600336548631" />
     <state x="548" y="57" key="#com.jetbrains.php.refactoring.extractMethod.PhpExtractMethodDialog#method0" timestamp="1600209823055">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -230,10 +233,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="189" height="457" key="HiddenNamespacesPopup/0.0.1536.824@0.0.1536.824" timestamp="1599145578801" />
-    <state x="531" y="228" key="NewPhpClassDialog" timestamp="1600264483769">
+    <state x="558" y="75" key="NewPhpClassDialog" timestamp="1600344015343">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="531" y="228" key="NewPhpClassDialog/0.0.1536.824@0.0.1536.824" timestamp="1600264483769" />
+    <state x="558" y="75" key="NewPhpClassDialog/0.0.1536.824@0.0.1536.824" timestamp="1600344015343" />
+    <state x="758" y="217" key="NewPhpFileDialog" timestamp="1600299798298">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="758" y="217" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1600299798298" />
     <state x="277" y="55" key="SettingsEditor" timestamp="1599672293851">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -250,5 +257,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1600091586638" />
+    <state x="431" y="145" key="search.everywhere.popup" timestamp="1600337718090">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1600337718090" />
   </component>
 </project>
