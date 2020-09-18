@@ -29,6 +29,7 @@ class ResetPasswordAction
      * @var JWTTokenManagerInterface
      */
     private $tokenManager;
+
     private $token_ttl;
 
     /**

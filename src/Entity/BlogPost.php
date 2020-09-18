@@ -24,7 +24,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     collectionOperations={
  *          "get",
  *          "post"={"access_control"="is_granted('ROLE_WRITER')"}
- *      }
+ *      },
+ *     denormalizationContext={
+ *          "groups"={"post"}
+ *     }
  * )
  */
 class BlogPost
@@ -82,11 +85,20 @@ class BlogPost
     private $comments;
 
     /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Image")
+     * @ORM\JoinTable()
+     * @Groups({"post","single_post"})
+     * @ApiSubresource()
+     */
+    private $images;
+
+    /**
      * BlogPost constructor.
      */
     public function __construct()
     {
         $this->comments = new ArrayCollection();
+        $this->images = new ArrayCollection();
     }
 
 
@@ -175,4 +187,20 @@ class BlogPost
         return $this->comments;
     }
 
+    /**
+     * @return Collection
+     */
+    public function getImages(): Collection
+    {
+        return $this->images;
+    }
+
+    public function addImage(Image $image)
+    {
+        $this->images->add($image);
+    }
+
+    public function removeImage(Image $image){
+        $this->images->removeElement($image);
+    }
 }
