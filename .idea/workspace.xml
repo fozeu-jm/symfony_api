@@ -2,10 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="924f386a-f485-47ad-90f6-669150c46207" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Exception/EmptyBodyException.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/packages/api_platform.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/api_platform.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/dev/monolog.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/dev/monolog.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/BlogPost.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/BlogPost.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Comment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Security/UserConfirmationService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/UserConfirmationService.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,7 +203,7 @@
       <workItem from="1599671640090" duration="40591000" />
       <workItem from="1599910958697" duration="25216000" />
       <workItem from="1600159379698" duration="76749000" />
-      <workItem from="1600358662026" duration="24527000" />
+      <workItem from="1600358662026" duration="39431000" />
     </task>
     <servers />
   </component>
@@ -226,10 +231,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="562" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1600372605621" />
-    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1600359869422">
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1600445216867">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1600359869422" />
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1600445216867" />
     <state x="548" y="57" key="#com.jetbrains.php.refactoring.extractMethod.PhpExtractMethodDialog#method0" timestamp="1600209823055">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -238,10 +243,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="189" height="457" key="HiddenNamespacesPopup/0.0.1536.824@0.0.1536.824" timestamp="1599145578801" />
-    <state x="558" y="75" key="NewPhpClassDialog" timestamp="1600369133023">
+    <state x="558" y="75" key="NewPhpClassDialog" timestamp="1600450668212">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="558" y="75" key="NewPhpClassDialog/0.0.1536.824@0.0.1536.824" timestamp="1600369133023" />
+    <state x="558" y="75" key="NewPhpClassDialog/0.0.1536.824@0.0.1536.824" timestamp="1600450668212" />
     <state x="758" y="217" key="NewPhpFileDialog" timestamp="1600365936555">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -266,10 +271,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="492" y="55" key="refactoring.ChangeSignatureDialog/0.0.1536.824@0.0.1536.824" timestamp="1600365014270" />
-    <state x="425" y="187" key="run.anything.popup" timestamp="1600091586638">
+    <state x="425" y="187" key="run.anything.popup" timestamp="1600431180190">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1600091586638" />
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1600431180190" />
     <state x="431" y="145" key="search.everywhere.popup" timestamp="1600358683645">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

@@ -39,7 +39,8 @@ use App\Controller\ResetPasswordAction;
  *     collectionOperations={
  *          "post"={
  *                      "denormalization_context"={ "groups"={"post"} },
- *                      "normalization_context"={ "groups"={"get"} }
+ *                      "normalization_context"={ "groups"={"get"} },
+ *                      "validation_groups" = {"post"}
  *                  },
  *          "get"={
  *                  "normalization_context"={ "groups"={"get"} }

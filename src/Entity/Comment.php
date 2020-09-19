@@ -10,7 +10,14 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ApiResource(
- *     attributes={"order" = {"published":"DESC"}},
+ *     attributes={"order" = {"published":"DESC"},
+ *          "pagination_enabled"=true,
+ *          "pagination_client_enabled"=true,
+ *          "pagination_items_per_page"=2,
+ *          "pagination_partial"=false,
+ *          "maximum_items_per_page"=400,
+ *          "pagination_client_items_per_page"=true
+ *     },
  *     itemOperations={
  *          "get",
  *          "put"={
