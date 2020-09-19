@@ -48,6 +48,8 @@ class Image
      */
     private $url;
 
+    private $displayUrl;
+
     /**
      * @return mixed
      */
@@ -73,12 +75,28 @@ class Image
 
     public function getUrl()
     {
-        return "/images/" . $this->url;
+        return $this->url;
     }
 
     public function setUrl($url): void
     {
         $this->url = $url;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getDisplayUrl()
+    {
+        return "/images/".$this->url;
+    }
+
+
+
+    public function __toString()
+    {
+        return strval($this->id) .":".$this->url;
+    }
+
 
 }

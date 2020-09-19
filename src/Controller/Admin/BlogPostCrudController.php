@@ -4,8 +4,12 @@ namespace App\Controller\Admin;
 
 use App\Entity\BlogPost;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -22,11 +26,13 @@ class BlogPostCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            TextField::new('title'),
-            TextField::new('author'),
-            TextField::new('slug'),
+            Field::new('title'),
             DateTimeField::new('published'),
-            TextareaField::new('content'),
+            Field::new('content'),
+            Field::new('slug'),
+            AssociationField::new('author'),
+            AssociationField::new('comments'),
+            AssociationField::new('images')
         ];
     }
 

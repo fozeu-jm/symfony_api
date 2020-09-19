@@ -209,7 +209,7 @@ class BlogPost
     /**
      * @return User
      */
-    public function getAuthor(): User
+    public function getAuthor(): ? User
     {
         return $this->author;
     }
@@ -247,5 +247,10 @@ class BlogPost
     public function removeImage(Image $image)
     {
         $this->images->removeElement($image);
+    }
+
+    public function __toString(): string
+    {
+        return $this->title;
     }
 }

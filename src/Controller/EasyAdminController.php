@@ -4,6 +4,9 @@ namespace App\Controller;
 
 use App\Controller\Admin\BlogPostCrudController;
 use App\Entity\BlogPost;
+use App\Entity\Comment;
+use App\Entity\Image;
+use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -26,13 +29,19 @@ class EasyAdminController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Symfony');
+            ->setTitle('EasyAdmin');
     }
+
+
 
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::section("Blog Menu Section");
         yield MenuItem::linkToCrud('Posts', 'fa fa-file-pdf', BlogPost::class);
+        yield MenuItem::linkToCrud('Comments', 'fa fa-commenting', Comment::class);
+        yield MenuItem::linkToCrud('Users', 'fa fa-user-circle', User::class);
+        yield MenuItem::linkToCrud('Images', 'fa fa-camera', Image::class);
+
     }
 }

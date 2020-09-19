@@ -106,7 +106,7 @@ class Comment
     /**
      * @return User
      */
-    public function getAuthor(): User
+    public function getAuthor(): ? User
     {
         return $this->author;
     }
@@ -123,7 +123,7 @@ class Comment
     /**
      * @return BlogPost
      */
-    public function getBlogPost(): BlogPost
+    public function getBlogPost():? BlogPost
     {
         return $this->blogPost;
     }
@@ -136,6 +136,11 @@ class Comment
         $this->blogPost = $blogPost;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return substr($this->content, 0,20).'...';
     }
 
 }
