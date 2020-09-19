@@ -55,7 +55,9 @@ use ApiPlatform\Core\Serializer\Filter\PropertyFilter;
  *     }
  * )
  * @ApiResource(
- *     attributes={"order" = {"published":"DESC"}},
+ *     attributes={"order" = {"published":"DESC"},
+ *          "pagination_client_enabled"=true
+ *     },
  *     itemOperations={
  *          "get"={
  *                  "normalization_context"={ "groups"={"single_post"} }
@@ -207,7 +209,7 @@ class BlogPost
     /**
      * @return User
      */
-    public function getAuthor(): User
+    public function getAuthor(): ? User
     {
         return $this->author;
     }
@@ -245,5 +247,10 @@ class BlogPost
     public function removeImage(Image $image)
     {
         $this->images->removeElement($image);
+    }
+
+    public function __toString(): string
+    {
+        return $this->title;
     }
 }

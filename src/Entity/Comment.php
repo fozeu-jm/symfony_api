@@ -10,7 +10,14 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ApiResource(
- *     attributes={"order" = {"published":"DESC"}},
+ *     attributes={"order" = {"published":"DESC"},
+ *          "pagination_enabled"=true,
+ *          "pagination_client_enabled"=true,
+ *          "pagination_items_per_page"=2,
+ *          "pagination_partial"=false,
+ *          "maximum_items_per_page"=400,
+ *          "pagination_client_items_per_page"=true
+ *     },
  *     itemOperations={
  *          "get",
  *          "put"={
@@ -99,7 +106,7 @@ class Comment
     /**
      * @return User
      */
-    public function getAuthor(): User
+    public function getAuthor(): ? User
     {
         return $this->author;
     }
@@ -116,7 +123,7 @@ class Comment
     /**
      * @return BlogPost
      */
-    public function getBlogPost(): BlogPost
+    public function getBlogPost():? BlogPost
     {
         return $this->blogPost;
     }
@@ -129,6 +136,11 @@ class Comment
         $this->blogPost = $blogPost;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return substr($this->content, 0,20).'...';
     }
 
 }

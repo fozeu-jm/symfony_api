@@ -5,6 +5,7 @@ namespace App\Security;
 
 
 use App\Email\Mailer;
+use App\Exception\InvalidConfirmationTokenException;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
@@ -42,6 +43,10 @@ class UserConfirmationService
         $this->mailer = $mailer;
     }
 
+    /**
+     * @param string $confirmationToken
+     * @throws InvalidConfirmationTokenException
+     */
     public function confirmUser(string $confirmationToken)
     {
         $this->logger->debug('Fetching user by confirmation token');
@@ -53,7 +58,7 @@ class UserConfirmationService
         // User was NOT found by confirmation token
         if (!$user) {
             $this->logger->debug('User by confirmation token not found');
-            throw new NotFoundHttpException();
+            throw new InvalidConfirmationTokenException();
         }
 
         $user->setEnabled(true);

@@ -47,9 +47,12 @@ services:
 #        tags:
 #            - { name: 'monolog.logger', channel: 'security' }
 
-
     acme_api.event.authentication_success_listener:
         class: App\EventSubscriber\AuthenticationSuccessListener
         arguments: ["%lexik_jwt_authentication.token_ttl%"]
         tags:
             - { name: kernel.event_listener, event: lexik_jwt_authentication.on_authentication_success, method: onAuthenticationSuccessResponse }
+
+    App\Security\UserConfirmationService:
+        arguments:
+            $logger: '@monolog.logger.token_confirmation'
