@@ -16,6 +16,7 @@ use Symfony\Component\Serializer\SerializerAwareInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Serializer\SerializerAwareTrait;
 
+//to display certain entity field if current user is the owner of entity
 class UserAttributeNormalizer implements ContextAwareNormalizerInterface, SerializerAwareInterface
 {
     use SerializerAwareTrait;

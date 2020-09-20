@@ -8,6 +8,7 @@ use Lexik\Bundle\JWTAuthenticationBundle\Event\AuthenticationSuccessEvent;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Security\Core\User\UserInterface;
 
+//intercept authentication success listener to att token_ttl to authentication response
 class AuthenticationSuccessListener
 {
     /**
@@ -32,15 +33,10 @@ class AuthenticationSuccessListener
     {
         $data = $event->getData();
         $user = $event->getUser();
-
-
         if (!$user instanceof UserInterface) {
             return;
         }
-
-
         $data['token_ttl']=$this->token_ttl;
-
         $event->setData($data);
     }
 

@@ -12,6 +12,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 
+// upload image action
 class UploadImageAction
 {
     /**

@@ -13,6 +13,7 @@ use Symfony\Component\HttpKernel\Event\ViewEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\Security\Core\Security;
 
+//to automatically set author field to currently authenticated user on comment and blogPost entity
 class AuthorEntitySubscriber implements EventSubscriberInterface
 {
     /**
@@ -43,7 +44,7 @@ class AuthorEntitySubscriber implements EventSubscriberInterface
         $entity = $event->getControllerResult();
         $method = $event->getRequest()->getMethod();
         $author = $this->security->getUser();
-        if ((!$entity instanceof BlogPost && !$entity instanceof Comment) || Request::METHOD_POST !== $method) {
+        if ((!$entity instanceof BlogPost && !$entity instanceof Comment) || Request::METHOD_POST !== $method || $author === null) {
             return;
         }
         $entity->setAuthor($author);

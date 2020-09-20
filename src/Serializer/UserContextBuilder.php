@@ -10,6 +10,7 @@ use App\Entity\User;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
+//to display certains fields if user role is admin
 class UserContextBuilder implements SerializerContextBuilderInterface
 {
     /**
