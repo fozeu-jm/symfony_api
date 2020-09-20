@@ -14,6 +14,7 @@ use Symfony\Component\HttpKernel\Event\ViewEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
+//to manage user registration (hash user password on registration and send account activation email )
 class PasswordHashSubscriber implements EventSubscriberInterface
 {
     /**

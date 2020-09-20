@@ -15,6 +15,7 @@ use Symfony\Component\HttpKernel\Event\ViewEvent;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\KernelEvents;
 
+//to verify user confirmation token and activate account on post request
 class UserConfirmationSubscriber implements EventSubscriberInterface
 {
 
