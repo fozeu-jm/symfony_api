@@ -20,11 +20,8 @@ use Symfony\Component\Serializer\SerializerAwareTrait;
 class UserAttributeNormalizer implements ContextAwareNormalizerInterface, SerializerAwareInterface
 {
     use SerializerAwareTrait;
-
     private $tokenStorage;
-
     const USER_ATTRIBUTE_NORMALIZER_ALREADY_CALLED = 'USER_ATTRIBUTE_NORMALIZER_ALREADY_CALLED';
-
 
     /**
      * UserAttributeNormalizer constructor.
