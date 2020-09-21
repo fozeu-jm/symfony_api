@@ -12,17 +12,21 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 
 /**
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="App\Repository\ImageRepository")
  * @Vich\Uploadable()
  * @ApiResource(
+ *     attributes={
+ *         "order"={"id": "ASC"},
+ *         "formats"={"json", "jsonld", "form"={"multipart/form-data"}}
+ *     },
  *     collectionOperations={
- *      "get",
- *      "post"={
- *          "method" = "POST",
- *          "path" = "/images",
- *          "controller" = UploadImageAction::class,
- *          "defaults" = {"_api_receive"=false}
- *      }
+ *          "get",
+ *          "post"={
+ *              "method" = "POST",
+ *              "path" = "/images",
+ *              "controller" = UploadImageAction::class,
+ *              "defaults" = {"_api_receive"=false}
+ *           }
  *     },
  *     itemOperations={"get","put","delete"}
  * )
@@ -43,10 +47,11 @@ class Image
     private $file;
 
     /**
-     * @ORM\Column(type="string",nullable=true, length=255)
+     * @ORM\Column(type="string",nullable=false, length=255)
      * @Groups({"single_post"})
      */
     private $url;
+
 
     private $displayUrl;
 
@@ -91,12 +96,8 @@ class Image
         return "/images/".$this->url;
     }
 
-
-
     public function __toString()
     {
         return strval($this->id) .":".$this->url;
     }
-
-
 }

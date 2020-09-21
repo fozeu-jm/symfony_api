@@ -36,8 +36,15 @@
         "vich/uploader-bundle": "^1.15"
     },
     "require-dev": {
+        "behat/behat": "^3.7",
+        "behatch/contexts": "^3.3",
+        "coduo/php-matcher": "^4.0",
         "dg/bypass-finals": "^1.2",
         "doctrine/doctrine-fixtures-bundle": "^3.3",
+        "friends-of-behat/mink": "^1.8",
+        "friends-of-behat/mink-browserkit-driver": "^1.4",
+        "friends-of-behat/mink-extension": "^2.4",
+        "friends-of-behat/symfony-extension": "^2.1",
         "fzaninotto/faker": "^1.9",
         "symfony/maker-bundle": "^1.21"
     },

@@ -80,7 +80,7 @@ class BlogPost
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"single_post"})
+     * @Groups({"single_post","post"})
      */
     private $id;
 
@@ -88,14 +88,14 @@ class BlogPost
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank()
      * @Assert\Length(min=10)
-     * @Groups({"single_post"})
+     * @Groups({"single_post","post"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="datetime")
      * @Assert\Type("datetime")
-     * @Groups({"single_post"})
+     * @Groups({"single_post","post"})
      */
     private $published;
 
@@ -103,35 +103,35 @@ class BlogPost
      * @ORM\Column(type="text")
      * @Assert\NotBlank()
      * @Assert\Length(min=20)
-     * @Groups({"single_post"})
+     * @Groups({"single_post","post"})
      */
     private $content;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User",inversedBy="posts")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"single_post"})
+     * @Groups({"single_post","post"})
      */
     private $author;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\NotBlank()
-     * @Groups({"single_post"})
+     * @Groups({"single_post","post"})
      */
     private $slug;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="blogPost")
      * @ApiSubresource()
-     * @Groups({"single_post"})
+     * @Groups({"single_post","post"})
      */
     private $comments;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Image")
-     * @ORM\JoinTable()
-     * @Groups({"post","single_post"})
+     * @ORM\JoinTable(name="blogpostimagejoin")
+     * @Groups({"post","single_post","post"})
      * @ApiSubresource()
      */
     private $images;

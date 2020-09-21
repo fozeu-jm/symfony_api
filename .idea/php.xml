@@ -110,6 +110,22 @@
       <path value="$PROJECT_DIR$/vendor/jms/metadata" />
       <path value="$PROJECT_DIR$/vendor/symfony/phpunit-bridge" />
       <path value="$PROJECT_DIR$/vendor/dg/bypass-finals" />
+      <path value="$PROJECT_DIR$/vendor/behat/behat" />
+      <path value="$PROJECT_DIR$/vendor/behat/gherkin" />
+      <path value="$PROJECT_DIR$/vendor/behat/transliterator" />
+      <path value="$PROJECT_DIR$/vendor/symfony/css-selector" />
+      <path value="$PROJECT_DIR$/vendor/friends-of-behat/mink" />
+      <path value="$PROJECT_DIR$/vendor/friends-of-behat/mink-extension" />
+      <path value="$PROJECT_DIR$/vendor/friends-of-behat/mink-browserkit-driver" />
+      <path value="$PROJECT_DIR$/vendor/symfony/dom-crawler" />
+      <path value="$PROJECT_DIR$/vendor/symfony/browser-kit" />
+      <path value="$PROJECT_DIR$/vendor/justinrainbow/json-schema" />
+      <path value="$PROJECT_DIR$/vendor/behatch/contexts" />
+      <path value="$PROJECT_DIR$/vendor/openlss/lib-array2xml" />
+      <path value="$PROJECT_DIR$/vendor/coduo/php-matcher" />
+      <path value="$PROJECT_DIR$/vendor/coduo/php-to-string" />
+      <path value="$PROJECT_DIR$/vendor/friends-of-behat/symfony-extension" />
+      <path value="$PROJECT_DIR$/vendor/symfony/proxy-manager-bridge" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
